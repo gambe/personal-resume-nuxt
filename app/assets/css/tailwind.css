@@ -1,0 +1,262 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 217 89% 61%; /* Google Blue */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 53 95% 50%; /* Google Yellow */
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 142 70% 49%; /* Google Green */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 4 90% 58%; /* Google Red */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 217 89% 61%; /* Google Blue */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 53 95% 50%; /* Google Yellow */
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 142 70% 49%; /* Google Green */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 4 90% 58%; /* Google Red */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .glass-card {
+    @apply backdrop-blur-md bg-white/70 dark:bg-gray-900/70 shadow-lg border border-gray-200 dark:border-gray-800;
+  }
+
+  .button-hover {
+    @apply transition-all duration-300 ease-out-expo hover:scale-105 active:scale-95;
+  }
+
+  .skill-tag {
+    @apply px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground inline-flex items-center space-x-1 transition-transform hover:scale-105 border;
+  }
+
+  .google-gradient-text {
+    @apply text-transparent bg-clip-text bg-google-gradient;
+  }
+
+  .colorful-shadow {
+    box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3),
+                0 5px 15px rgba(234, 67, 53, 0.2),
+                0 5px 15px rgba(251, 188, 5, 0.2),
+                0 5px 15px rgba(52, 168, 83, 0.3);
+  }
+
+  /* Google color utilities */
+  .text-google-blue {
+    color: #4285F4;
+  }
+
+  .text-google-red {
+    color: #EA4335;
+  }
+
+  .text-google-yellow {
+    color: #FBBC05;
+  }
+
+  .text-google-green {
+    color: #34A853;
+  }
+
+  .bg-google-blue {
+    background-color: #4285F4;
+  }
+
+  .bg-google-red {
+    background-color: #EA4335;
+  }
+
+  .bg-google-yellow {
+    background-color: #FBBC05;
+  }
+
+  .bg-google-green {
+    background-color: #34A853;
+  }
+
+  .border-google-blue {
+    border-color: #4285F4;
+  }
+
+  .border-google-red {
+    border-color: #EA4335;
+  }
+
+  .border-google-yellow {
+    border-color: #FBBC05;
+  }
+
+  .border-google-green {
+    border-color: #34A853;
+  }
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  @apply fixed w-6 h-6 rounded-full pointer-events-none z-50 hidden md:block;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, background-color 0.3s, width 0.3s, height 0.3s;
+  mix-blend-mode: difference;
+}
+
+/* Sticky header background with blur */
+.sticky-header {
+  @apply fixed top-0 left-0 w-full z-40 transition-all duration-300;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Shimmer effect for cards */
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Fade in animation for sections on scroll */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Circle background for hero section */
+.circle-bg {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(238, 242, 255, 0.8) 0%, rgba(238, 242, 255, 0) 70%);
+  z-index: -1;
+}
+
+/* Google colored circles */
+.google-blue-circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(66, 133, 244, 0.15);
+  z-index: -1;
+}
+
+.google-red-circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(234, 67, 53, 0.15);
+  z-index: -1;
+}
+
+.google-yellow-circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(251, 188, 5, 0.15);
+  z-index: -1;
+}
+
+.google-green-circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(52, 168, 83, 0.15);
+  z-index: -1;
+}
+
+/* Subtle parallax effect */
+.parallax {
+  transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+}

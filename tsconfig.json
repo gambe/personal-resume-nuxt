@@ -1,0 +1,28 @@
+{
+    "extends": [
+        "@tsconfig/nuxt/tsconfig.json",
+        "./.nuxt/tsconfig.json"
+    ],
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "skipLibCheck": true,
+        "types": [
+            "@pinia/nuxt"
+        ],
+        "paths": {
+            "~": [
+                "./app"
+            ],
+            "~/*": [
+                "./app/*"
+            ],
+            "@": [
+                "./app"
+            ],
+            "@/*": [
+                "./app/*"
+            ]
+        }
+    }
+}
